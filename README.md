@@ -213,3 +213,32 @@ there is another class (mentioned in VTS.cpp) that adds some more functions:
 lastly, in VTS.cpp I mentioned there was three other functions in the EXTRA_FUNCTIONS class but they arent there at the moment,
 they are there in the code above though.
 
+IPECS_EXTRA_FUNCTIONS:
+
+    print(string, bool); | prints a string with a new line (unless bool is false)
+
+    printD(int, bool); | print an integer with a new line (unless bool is false)
+
+    Fprint(float, bool); | print a float with a new line (unless bool is false)
+
+    Dprint(double, bool); | print a double with a new line (unless bool is false)
+
+    Cprint(char, bool); | print a character with a new line (unless bool is false)
+
+    trueIndex(int); | subtracts 1 from input and returns that value (for array and string index)
+
+IPECC:
+
+    IPECS(int, int, string array, string, bool); | converts an integer into a string , *nullifies that integer later if bool is true*, encodes it into something different, saves that string to an array which should have a specific size of 5 (if bool is true), saves the same string to a file 10 times (if bool is true), and then returns said string.
+
+    UNIPECS(string, string, bool); | converts the encoded string back into an integer, *nullifies that string later if bool is true*, and then returns the integer
+
+    STIBS(string array, string, string, bool); | is used for saving the encoded string to an array and to a file, mostly used by IPECS, description more in-depth in VTS.cpp
+
+    OPENSTIBS(string); | opens the file that holds the encoded string and returns that encoded string
+
+    NULLIFY_INT(int); | sets int to 0, is a protected function
+
+    NULLIFY_STRING(string); | sets string to NULL, is a protected function
+
+

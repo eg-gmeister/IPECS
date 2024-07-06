@@ -3,10 +3,13 @@
 #include <cstdlib>
 #include <cmath>
 #include <fstream>
+#include <ctime>
 
 using namespace std;
 
 class IPECC {
+
+
 
 protected:
 
@@ -20,7 +23,7 @@ protected:
 
     }
     int intLength(int integer) {
-        int returnVal;
+        int returnVal = 0;
 
         while (integer != 0) {
             integer /= 10;
@@ -29,16 +32,16 @@ protected:
         }
         return returnVal;
     }
-    
+
 public:
 
     //--------IPECS--------//
 
     string IPECS(int USERINPUT, int &nullifyinput, string array[5],string &key1, bool doNull = true) {
-        //Integer Processing, Encoding, and Conversion System
+        
         try {
             if (USERINPUT == nullifyinput) {
-                        USERINPUT += 1571 << 5;
+                USERINPUT += 64 << 5;
                 int INPUTLENGTH = intLength(USERINPUT);
                 string sINPUT = to_string(USERINPUT);
                 sINPUT = "0" + sINPUT + "0";
@@ -57,10 +60,20 @@ public:
                 return sINPUT;        
             }
             else {
-                throw("error: inputs must be equal");
+                throw 1;
+                
             }
-        } catch(string error) {
-            cout << error;
+        } catch(...) {
+
+            time_t timestamp;
+            time(&timestamp);
+
+            ofstream logfile("log.txt");
+
+            logfile << ctime(&timestamp) << " : error: inputs must be equal" << "\n" ;
+            cout << "error \n";
+
+            return "NULL";
         }
 
     }
@@ -72,7 +85,7 @@ public:
                 input.erase(input.length() - 5, 5);
                 input.erase(input.length() - input.length(), 7);
                 int INTINPUT = stoi(input, 0, 10);
-                INTINPUT -= 1571 << 5;
+                INTINPUT -= 64 << 5;
 
                 if (nullstring == true) {
                     NULLIFY_STRING(nullifyinput);
@@ -85,21 +98,37 @@ public:
             } 
             else {
 
-                throw("error: required inputs must be equal");
+                throw 2;
             }
         }
-        catch(string error) {
-            cout << error;
+        catch(...) {
+
+            time_t timestamp;
+            time(&timestamp);
+
+            ofstream logfile("log.txt");
+
+            logfile << ctime(&timestamp) << " : error : inputs must be equal" << "\n";
+            cout << "error \n";
+
             return 0;
         }
         
     
     }
 
+    void VOIDIPECS(string &update, int input, string array[5], string buk, bool nullint = true) {
+        update = IPECS(input, input, array, buk, nullint);
+    }
+
+    void VOIDUNIPECS(int &update, string input, bool nullstring = true) {
+        update = UNIPECS(input, input, nullstring);
+    }
+
     //--------STIBS---------//
 
     void STIBS(string Array[5], string key, string &key1, bool file) {
-        // String Transport and Integer Backup System
+       
         int i = 0;
         while (i < 5) {
             Array[i] = key;
@@ -107,16 +136,12 @@ public:
         }
 
         if (file == true) {
-            key1 = "1571" + key + "1571";
+            key1 = "64" + key + "64";
             ofstream file(key1 + "ipecbackup.txt");
 
-            for (int i = 0; i < 10; i++) {
-                if (i == 9) {
-                    file << key;
-                    break;
-                }
-                file << key << "\n";
-
+            for (int i = 0; i < 1; i++) {
+                file << key;
+                break;
             }
             file.close();
         }
@@ -141,6 +166,7 @@ public:
 class IPECS_EXTRA_FUNCTIONS {
 
 public:
+
     int trueIndex(int index) {
         int trueindex = index - 1;
         return trueindex;
@@ -157,6 +183,33 @@ public:
     }
 
     void printD(int input, bool newline = true) {
+        if (newline == false) {
+            cout << input;
+        }
+        else {
+            cout << input << "\n";
+        }
+    }
+
+    void Fprint(float input, bool newline = true) {
+        if (newline == false) {
+            cout << input;
+        }
+        else {
+            cout << input << "\n";
+        }
+    }
+
+    void Dprint(double input, bool newline = true) {
+        if (newline == false) {
+            cout << input;
+        }
+        else {
+            cout << input << "\n";
+        }
+    }
+
+    void Cprint(char input, bool newline = true) {
         if (newline == false) {
             cout << input;
         }
@@ -221,10 +274,6 @@ int main() {
 
     print(IPECS.OPENSTIBS(inputbackupkey))
 
-    or just 
-
-    print(inputbackupkey)
-
     OPENSTIBS and the saved Array can help if the original string was lost or overwritten
 */
 
@@ -238,6 +287,18 @@ int main() {
     (assign the same number to multiple variables using this key), you can do this up to 5 times with IPECS ran once (ran normally (with STIBS, all booleans true))
 
     To use OPENSTIBS you must assign the OPENSTIBS value to a string
+
+    note :
+
+    for both UNIPECS and IPECS you can use a void function which works the same but looks more like this:
+
+    IPECS(inputhold, input, inputholdarray, inputbackupkey, true);
+
+    and 
+
+    UNIPECS(input, inputhold, true);
+
+    again the last parameter (the boolean) can be false if you dont want to erase any variables or run STIBS
 
 
 */
@@ -259,7 +320,7 @@ int main() {
     If you want to use these functions you can move them to public OR create a derived class that utilizes these functions
 
 
-    TUTORIAL IPECS VERSION : 2.1
+    TUTORIAL IPECS VERSION : 2.2
 
 */
     return 0;

@@ -264,7 +264,7 @@ trueIndex(int); | subtracts 1 from input and returns that value (for array and s
 
 IPECC:
 -------------------------------------------------------
-IPECS(int, int, string array, string, bool); | converts an integer into a string , *nullifies that integer later if bool is true*, encodes it into something different, saves that string to an array which should have a specific size of 5 (if bool is true), saves the same string to a file 10 times (if bool is true), and then returns said string.
+IPECS(int, int, string array, string, bool); | converts an integer into a string , *nullifies that integer later if bool is true*, encodes it into something different, saves that string to an array which should have a specific size of 5 (if bool is true), saves the same string to a file (if bool is true), and then returns said string.
 -------------------------------------------------------
 UNIPECS(string, string, bool); | converts the encoded string back into an integer, *nullifies that string later if bool is true*, and then returns the integer
 -------------------------------------------------------

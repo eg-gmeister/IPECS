@@ -213,6 +213,13 @@ there is another class (mentioned in VTS.cpp) that adds some more functions:
 lastly, in VTS.cpp I mentioned there was three other functions in the EXTRA_FUNCTIONS class but they arent there at the moment,
 they are there in the code above though.
 
+-----------------------------------
+
+Function Descriptions 
+
+__________________________________
+
+
 IPECS_EXTRA_FUNCTIONS:
 
     print(string, bool); | prints a string with a new line (unless bool is false)
@@ -226,6 +233,8 @@ IPECS_EXTRA_FUNCTIONS:
     Cprint(char, bool); | print a character with a new line (unless bool is false)
 
     trueIndex(int); | subtracts 1 from input and returns that value (for array and string index)
+
+------------------------------------
 
 IPECC:
 

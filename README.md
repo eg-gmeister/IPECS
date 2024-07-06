@@ -6,9 +6,13 @@ IPECS really is just some Code that has a useless and unrelated name, and really
 
 it boils down to a class that adds the ability to save integers as encoded strings, and then save those encoded strings to an array and a file (10 times).
 
+but you can really just say that it converts an integer into a string and copies that string so you can hold more values with that string (and integer)
+
 a more in depth tutorial is in the other file VTS.cpp and really explains it a lot more than i do here.
 
 it took me a while to make since im a beginner with c++ and because I didnt really have a plan with this.
+
+
 
 if you already understand how to use IPECS then copy the code into your code
 

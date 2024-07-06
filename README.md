@@ -280,6 +280,8 @@ IPECC:
 
     NULLIFY_STRING(string); | sets string to NULL, is a protected function
 
+    intLength(int); | finds the length of an integer, is a protected function
+
 ---------------------------------
 
 Includes:
